@@ -28,15 +28,26 @@ class MainViewmodel(
                     val faces = faceDetector.detectFace(uri = uri) { size ->
                         _state.update {
                             it.copy(
+                                detecting = true,
                                 imageSize = size
                             )
                         }
                     }
                     _state.update {
                         it.copy(
-                            faces = faces
+                            faces = faces,
+                            detecting = false
                         )
                     }
+                }
+            }
+
+            FaceDetectorActions.OnClearImage -> {
+                _state.update {
+                    it.copy(
+                        uri = null,
+                        faces = emptyList()
+                    )
                 }
             }
         }

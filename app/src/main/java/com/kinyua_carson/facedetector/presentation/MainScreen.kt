@@ -16,6 +16,8 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -137,8 +139,24 @@ fun MainScreen(
             onClick = { onAction(FaceDetectorActions.DetectFace) }
         ) {
             Text(
-                text = "Detect Face"
+                text = if (state.detecting) { "Detecting ..." } else "Detect Face"
             )
         }
+
+        if (state.uri != null) {
+            Button(
+                modifier = Modifier.fillMaxWidth(),
+                onClick = { onAction(FaceDetectorActions.OnClearImage) },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.errorContainer,
+                    contentColor = MaterialTheme.colorScheme.onErrorContainer
+                )
+            ) {
+                Text(
+                    text = "Clear Image"
+                )
+            }
+        }
+
     }
 }
