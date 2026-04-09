@@ -3,7 +3,7 @@
 This is a sample Android application demonstrating the implementation of face detection using **Google ML Kit**.
 
 ## Features
-- Real-time or static image face detection.
+- Static image face detection.
 - Modern UI built with **Jetpack Compose**.
 - Dependency injection using **Koin**.
 - Efficient image loading with **Coil**.
